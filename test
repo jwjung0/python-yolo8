@@ -1,0 +1,28 @@
+from ultralytics import YOLO
+import cv2
+from utils import Util
+
+_util = Util()
+_samples = _util.get_list_files('samples', None)
+print('---> samples: ', _samples)
+
+model = YOLO('yolov5nu.pt')
+# model.predict(source="0", show=True, stream=True, classes=0)
+
+if (len(_samples) > 0):
+    results = model(_samples)
+    model.predict(source="0", show=True, stream=True, classes=0)
+ 
+    for i, result in enumerate(results):
+        boxes = result.boxes
+        masks = result.masks
+        keypoints = result.keypoints
+        probs = result.probs
+        
+        print(f'Box coorodinates ({i}): no. of objects found: ', len(boxes))
+        # for box in boxes:
+        #     print(box)
+        
+        result.plot()
+        # cv2.waitKey(0)    
+        # cv2.destroyAllWindows()
