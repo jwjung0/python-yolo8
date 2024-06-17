@@ -2,7 +2,7 @@ from ultralytics import YOLO
 from utils import Util
 
 class ExpertTflite:
-    
+
     def __init__(self) -> None:
         print('---> expert tflite > init')
         self._get_files()

@@ -1,1 +1,6 @@
 venv/
+yolov8x_saved_model/
+samples/
+*.pt
+*.onnx
+*.npy
